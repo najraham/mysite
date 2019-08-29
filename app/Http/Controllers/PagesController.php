@@ -84,12 +84,12 @@ class PagesController extends Controller
         ]);
     }
 
-    public function services()
+    public function works()
     {
-        $title = "Services";
+        $title = "Works";
         // $index = Index::first();
         $footer = Footer::first();
-        return view('frontend.pages.services')->with([
+        return view('frontend.pages.works')->with([
             // 'index' => $index,
             'footer' => $footer,
             'title' => $title,

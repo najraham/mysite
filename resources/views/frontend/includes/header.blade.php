@@ -20,7 +20,7 @@
                                 <a class="nav-link" href="{{route('show_about_page')}}">about</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('show_services_page')}}">services</a>
+                                <a class="nav-link" href="{{route('show_works_page')}}">works</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdownpro"

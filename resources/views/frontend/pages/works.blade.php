@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner text-center">
                         <div class="breadcrumb_iner_item">
-                            <h2>best <span>services</span></h2>
+                            <h2>wo<span>rks</span></h2>
                         </div>
                     </div>
                 </div>
