@@ -7,7 +7,10 @@ use App\Index;
 use App\Footer;
 use App\About;
 use App\Review;
+use App\Blog;
 use App\Skill;
+use App\Project;
+use App\Message;
 
 class PagesController extends Controller
 {
@@ -40,22 +43,36 @@ class PagesController extends Controller
     public function blog()
     {
         $title = "Blog";
-        // $index = Index::first();
+        $blogs = Blog::all();
         $footer = Footer::first();
         return view('frontend.pages.blog')->with([
-            // 'index' => $index,
+            'blogs' => $blogs,
             'footer' => $footer,
             'title' => $title,
         ]);
     }
 
-    public function single_blog()
+    public function single_blog($id)
     {
         $title = "Single Blog";
-        // $index = Index::first();
+        $blog = Blog::find($id);
         $footer = Footer::first();
         return view('frontend.pages.single-blog')->with([
-            // 'index' => $index,
+            'blog' => $blog,
+            'footer' => $footer,
+            'title' => $title,
+        ]);
+    }
+    
+    public function works()
+    {
+        $title = "Works";
+        $skills = Skill::all() ;
+        $footer = Footer::first();
+        $projects = Project::all();
+        return view('frontend.pages.works')->with([
+            'skills' => $skills,
+            'projects' => $projects,
             'footer' => $footer,
             'title' => $title,
         ]);
@@ -64,10 +81,8 @@ class PagesController extends Controller
     public function contact()
     {
         $title = "Contact";
-        // $index = Index::first();
         $footer = Footer::first();
         return view('frontend.pages.contact')->with([
-            // 'index' => $index,
             'footer' => $footer,
             'title' => $title,
         ]);
@@ -85,16 +100,17 @@ class PagesController extends Controller
         ]);
     }
 
-    public function works()
+    public function portfolio_detail()
     {
-        $title = "Works";
-        $skills = Skill::all() ;
+        $title = "Portfolio Detail";
+        // $index = Index::first();
         $footer = Footer::first();
-        return view('frontend.pages.works')->with([
-            'skills' => $skills,
+        return view('frontend.pages.portfolio_details')->with([
+            // 'index' => $index,
             'footer' => $footer,
             'title' => $title,
         ]);
     }
+
 
 }

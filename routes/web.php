@@ -21,6 +21,14 @@ Route::get('/contact', 'PagesController@contact')->name('show_contact_page');
 
 Route::get('/portfolio', 'PagesController@portfolio')->name('show_portfolio_page');
 
+Route::get('/portfolio_detail', 'PagesController@portfolio_detail')->name('show_portfolio_detail_page');
+
 Route::get('/works', 'PagesController@works')->name('show_works_page');
 
-Route::get('/single_blog', 'PagesController@single_blog')->name('show_single_blog_page');
+Route::get('/single_blog/id={id}', 'PagesController@single_blog')->name('show_single_blog_page');
+
+Route::post('/send' , 'MessageController@send')->name('send_message');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

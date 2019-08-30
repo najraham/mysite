@@ -21,40 +21,30 @@
     {{-- projects --}}
 
     <!--::our_service part start::-->
-    <section class="our_service padding_top">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_offer_text text-center wedding">
-                        <span class="flaticon-love-and-romance"></span>
-                        {{-- title --}}
-                        <h4>wedding photography</h4>
-                        {{-- short description --}}
-                        <p>World the end of summer the sweltering heat makes human
-                            sweat in the night and man plants and trees wilt even</p>
-                        <a href="#" class="btn_1">read more</a>
+     @foreach ($projects as $project)
+        <section class="our_service padding_top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_offer_text text-center wedding">
+                            <span class=""></span>
+                            {{-- title --}}
+                            <h4>{{$project->title}}</h4>
+                            {{-- short description
+                            <p>World the end of summer the sweltering heat makes human
+                                sweat in the night and man plants and trees wilt even</p> --}}
+                            <a href="{{$project->link}}" class="btn_1">read more</a>
+                        </div>
                     </div>
-                    <div class="single_offer_img d-none d-md-block">
-                        <img src="{{asset('frontend/img/single_offer_img_2.png')}}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-6">
-                    <div class="single_offer_img d-none d-md-block">
-                        <img src="{{asset('frontend/img/single_offer_img_1.png')}}" alt="">
-                    </div>
-                    <div class="single_offer_text text-center nature">
-                        <span class="flaticon-leaf"></span>
-                        <h4>Nature photography</h4>
-                        <p>that the monsoon clouds are soon coming, there is a
-                            strange silence in the ears, the sky gets darker and
-                            darker, the flash of lightning illuminates the dark
-                            skies all time needs band the sound of thunder fills the heart with fear.</p>
-                        <a href="#" class="btn_1">read more</a>
+                    <div class="col-lg-8 col-md-6">
+                        <div class="single_offer_img d-none d-md-block">
+                            <img src="{{asset('frontend/img/'.$project->image)}}" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+     @endforeach
     <!--::our_service part end::-->
 
     <!--::pricing part start::-->

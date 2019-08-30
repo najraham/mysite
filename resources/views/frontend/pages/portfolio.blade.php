@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb_iner text-center">
                         <div class="breadcrumb_iner_item">
-                            <h2>projects</h2>
+                            <h2>proj<span>ects</span></h2>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="portfolio-filter filters">
                         <ul>
@@ -41,12 +41,12 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-xl-12">
                     <div class="gallery_part_item filtr-container">
                         <a href="portfolio_details.html" class="img-gal filtr-item" data-category="1"
-                            style="background-image: url('img/gallery/gallery_item_1.png')">
+                            style="background-image: url('{{asset("frontend/img/gallery/gallery_item_1.png")}}')">
                             <div class="single_gallery_item">
                                 <div class="single_gallery_item_iner">
                                     <div class="gallery_item_text">
@@ -57,7 +57,7 @@
                             </div>
                         </a>
                         <a href="portfolio_details.html" class="img-gal width-1 filtr-item" data-category="2"
-                            style="background-image: url('img/gallery/gallery_item_2.png')">
+                            style="background-image: url('{{asset("frontend/img/gallery/gallery_item_2.png")}}')">
                             <div class="single_gallery_item">
                                 <div class="single_gallery_item_iner">
                                     <div class="gallery_item_text">
@@ -68,7 +68,7 @@
                             </div>
                         </a>
                         <a href="portfolio_details.html" class="img-gal width-2 filtr-item" data-category="3"
-                            style="background-image: url('img/gallery/gallery_item_3.png')">
+                            style="background-image: url('{{asset("frontend/img/gallery/gallery_item_3.png")}}')">
                             <div class="single_gallery_item">
                                 <div class="single_gallery_item_iner">
                                     <div class="gallery_item_text">
@@ -79,7 +79,7 @@
                             </div>
                         </a>
                         <a href="portfolio_details.html" class="img-gal width-2 filtr-item" data-category="4"
-                            style="background-image: url('img/gallery/gallery_item_4.png')">
+                            style="background-image: url('{{asset("frontend/img/gallery/gallery_item_4.png")}}')">
                             <div class="single_gallery_item">
                                 <div class="single_gallery_item_iner">
                                     <div class="gallery_item_text">
@@ -90,7 +90,7 @@
                             </div>
                         </a>
                         <a href="portfolio_details.html" class="img-gal width-1 filtr-item" data-category="1"
-                            style="background-image: url('img/gallery/gallery_item_5.png')">
+                            style="background-image: url('{{asset("frontend/img/gallery/gallery_item_5.png")}}')">
                             <div class="single_gallery_item">
                                 <div class="single_gallery_item_iner">
                                     <div class="gallery_item_text">
@@ -101,7 +101,7 @@
                             </div>
                         </a>
                         <a href="portfolio_details.html" class="img-gal filtr-item" data-category="2"
-                            style="background-image: url('img/gallery/gallery_item_6.png')">
+                            style="background-image: url('{{asset("frontend/img/gallery/gallery_item_6.png")}}')">
                             <div class="single_gallery_item">
                                 <div class="single_gallery_item_iner">
                                     <div class="gallery_item_text">
