@@ -7,6 +7,7 @@ use App\Index;
 use App\Footer;
 use App\About;
 use App\Review;
+use App\Skill;
 
 class PagesController extends Controller
 {
@@ -87,10 +88,10 @@ class PagesController extends Controller
     public function works()
     {
         $title = "Works";
-        // $index = Index::first();
+        $skills = Skill::all() ;
         $footer = Footer::first();
         return view('frontend.pages.works')->with([
-            // 'index' => $index,
+            'skills' => $skills,
             'footer' => $footer,
             'title' => $title,
         ]);

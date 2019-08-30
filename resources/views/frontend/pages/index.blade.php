@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <?php $x=1 ?>
-
     <!--::banner part start::-->
     <section class="banner_part">
         <div class="container">
@@ -31,12 +29,24 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-8">
                     <div class="about_us_text text-center">
-                        <h5>About me</h5>
+                        <section class="breadcrumb breadcrumb_bg">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="breadcrumb_iner text-center">
+                                            <div class="breadcrumb_iner_item">
+                                                <h2>About<span>me</span></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                         {{-- intro --}}
                         <h2>{{$index->intro}}</h2>
                         {{-- short description --}}
                         <p>{{$index->description}}</p>
-                        <a href="#" class="btn_2">read more</a>
+                        <a href="{{route('show_about_page')}}" class="btn_2">read more</a>
                     </div>
                 </div>
             </div>

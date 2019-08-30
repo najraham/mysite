@@ -18,22 +18,18 @@
     </section>
     <!-- breadcrumb start-->
 
+    {{-- projects --}}
+
     <!--::our_service part start::-->
     <section class="our_service padding_top">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section_tittle">
-                        <p>our service</p>
-                        <h2>what we offer</h2>
-                    </div>
-                </div>
-            </div>
             <div class="row align-items-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="single_offer_text text-center wedding">
                         <span class="flaticon-love-and-romance"></span>
+                        {{-- title --}}
                         <h4>wedding photography</h4>
+                        {{-- short description --}}
                         <p>World the end of summer the sweltering heat makes human
                             sweat in the night and man plants and trees wilt even</p>
                         <a href="#" class="btn_1">read more</a>
@@ -64,74 +60,39 @@
     <!--::pricing part start::-->
     <section class="pricing_part section_padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section_tittle">
-                        <p>Price table</p>
-                        <h2>pricing plan</h2>
+            <section class="breadcrumb breadcrumb_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb_iner text-center">
+                                <div class="breadcrumb_iner_item">
+                                    <h2>ski<span>lls</span></h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-sm-6">
-                    <div class="single_pricing_part">
-                        <div class="pricing_tittle">
-                            <img src="{{asset('frontend/img/icon/feature_icon_1.svg')}}" alt="">
-                            <p>Standard</p>
+                    @foreach ($skills as $skill)
+                        <div class="single_pricing_part">
+                            <div class="pricing_tittle">
+                                <i class="ti-crown" style="font-size:50px;"></i>
+                                {{-- name --}}
+                                <p>{{$skill->name}}</p>
+                            </div>
+                            {{-- percentage --}}
+                            <div class="percentage">
+                                <div class="progress">
+                                <div class="progress-bar color-1" role="progressbar" style="width: <?php $skill->percentage ?>}}"
+                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="pricing_content">
-                            <h3>$50.00 <span>/ mo</span></h3>
-                            <ul>
-                                <li>2GB Bandwidth</li>
-                                <li>Two Account</li>
-                                <li>15GB Storage</li>
-                                <li>Sale After Service</li>
-                                <li>3 Host Domain</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <a href="#" class="btn_2">book Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_pricing_part">
-                        <div class="pricing_tittle">
-                            <img src="{{asset('frontend/img/icon/feature_icon_2.svg')}}" alt="">
-                            <p>Standard</p>
-                        </div>
-                        <div class="pricing_content">
-                            <h3>$50.00 <span>/ mo</span></h3>
-                            <ul>
-                                <li>2GB Bandwidth</li>
-                                <li>Two Account</li>
-                                <li>15GB Storage</li>
-                                <li>Sale After Service</li>
-                                <li>3 Host Domain</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <a href="#" class="btn_2">book Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_pricing_part">
-                        <div class="pricing_tittle">
-                            <img src="{{asset('frontend/img/icon/feature_icon_3.svg')}}" alt="">
-                            <p>Standard</p>
-                        </div>
-                        <div class="pricing_content">
-                            <h3>$50.00 <span>/ mo</span></h3>
-                            <ul>
-                                <li>2GB Bandwidth</li>
-                                <li>Two Account</li>
-                                <li>15GB Storage</li>
-                                <li>Sale After Service</li>
-                                <li>3 Host Domain</li>
-                                <li>24/7 Support</li>
-                            </ul>
-                            <a href="#" class="btn_2">book Now</a>
-                        </div>
-                    </div>
+                    @endforeach
+                   
                 </div>
 
             </div>

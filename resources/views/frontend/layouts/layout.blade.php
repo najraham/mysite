@@ -38,7 +38,7 @@
         @endif
         
         .section_padding {
-            padding: 20px 0px;
+            padding: 40px 0px;
         }
 
         .padding_top {
