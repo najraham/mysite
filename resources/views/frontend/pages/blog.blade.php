@@ -18,6 +18,11 @@
     </section>
     <!-- breadcrumb start-->
     
+    {{-- <div class="row justify-content-right">
+        <a href="#" class="genric-btn info radius ">Add New Blog</a>
+    </div> --}}
+    
+
     <!--================Blog Area =================-->
     <section class="blog_area section_padding">
         <div class="container">
@@ -30,9 +35,9 @@
                                     {{-- image --}}
                                     <img class="card-img rounded-0" src="{{asset('frontend/img/blog/'.$blog->image)}}" alt="">
                                     {{-- created at --}}
-                                    <a href="#" class="blog_item_date">
-                                        <h3>15</h3>
-                                        <p>Jan</p>
+                                    <a href="{{route('show_single_blog_page' , ['id' => $blog->id])}}" class="blog_item_date">
+                                        <h3>{{$blog->created_at->format('d')}}</h3>
+                                        <p>{{$blog->created_at->format('M')}}</p>
                                     </a>
                                 </div>
 
@@ -43,11 +48,11 @@
                                     </a>
                                     {{-- body --}}
                                     <p>{{$blog->body}}</p>
-                                    <ul class="blog-info-link">
+                                    {{-- <ul class="blog-info-link"> --}}
                                         {{-- user --}}
-                                        <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
+                                        {{-- <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li> --}}
                                         {{-- <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li> --}}
-                                    </ul>
+                                    {{-- </ul> --}}
                                 </div>
                             </article>
                         @endforeach

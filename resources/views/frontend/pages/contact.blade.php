@@ -63,17 +63,31 @@
         </script>
 
       </div> --}}
-
+      
+      @include('frontend.includes.messages')
 
       <div class="row">
         <div class="col-12">
           <h2 class="contact-title">Get in Touch</h2>
         </div>
         <div class="col-lg-8">
-          <form class="form-contact contact_form" action="{{route('send_message')}}" method="post" id="contactForm"
-            novalidate="novalidate">
+          <form class="form-contact contact_form" action="{{route('send_message')}}" method="post">
             @csrf
             <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="subject">Name:</label>
+                  <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name'>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="subject">E-mail:</label>
+                  <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
+                </div>
+              </div>
               <div class="col-12">
                 <div class="form-group">
                   <label for="subject">Subject:</label>

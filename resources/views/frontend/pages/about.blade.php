@@ -25,7 +25,7 @@
                 <div class="col-lg-8">
                     <div class="about_us_text text-center mt--2">
                         {{-- heading --}}
-                        <h2>{{$about->heading}}</h2>
+                        <h2>{{$about->title}}</h2>
                         {{-- description --}}
                         <p>{{$about->description}}</p>
                         <a href="#" class="btn_2">read more</a>
@@ -37,7 +37,7 @@
     <!--::about_us part end::-->
 
     <!-- intro_video_bg start-->
-    <section class="intro_video_bg">
+    {{-- <section class="intro_video_bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- intro_video_bg part start-->
 
     <!--::review_part part start::-->
@@ -62,7 +62,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6 col-lg-6">
                     <div class="review_img">
-                        <img src="{{asset('frontend/img/review_bg.png')}}" alt="">
+                        <img width="450px" height="450px" src="{{asset('frontend/img/review_bg.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5">

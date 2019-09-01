@@ -10,12 +10,12 @@ class MessageController extends Controller
     public function send(Request $request)
     {
         $message = new Message();
-        $message->name = \Auth::user()->name;
-        $message->email = \Auth::user()->email;
+        $message->name = $request->input('name');
+        $message->email = $request->input('email');
         $message->subject = $request->input('subject');
         $message->message = $request->input('message');
         $message->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success' , 'Message sent succesfully');
     }
 }

@@ -22,9 +22,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('show_works_page')}}">works</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{route('show_portfolio_page')}}">portfolio</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('show_blog_page')}}">blogs</a>
                             </li>
