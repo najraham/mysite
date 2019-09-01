@@ -88,29 +88,29 @@ class PagesController extends Controller
         ]);
     }
 
-    public function portfolio()
-    {
-        $title = "Portfolio";
-        // $index = Index::first();
-        $footer = Footer::first();
-        return view('frontend.pages.portfolio')->with([
-            // 'index' => $index,
-            'footer' => $footer,
-            'title' => $title,
-        ]);
-    }
+    // public function portfolio()
+    // {
+    //     $title = "Portfolio";
+    //     // $index = Index::first();
+    //     $footer = Footer::first();
+    //     return view('frontend.pages.portfolio')->with([
+    //         // 'index' => $index,
+    //         'footer' => $footer,
+    //         'title' => $title,
+    //     ]);
+    // }
 
-    public function portfolio_detail()
-    {
-        $title = "Portfolio Detail";
-        // $index = Index::first();
-        $footer = Footer::first();
-        return view('frontend.pages.portfolio_details')->with([
-            // 'index' => $index,
-            'footer' => $footer,
-            'title' => $title,
-        ]);
-    }
+    // public function portfolio_detail()
+    // {
+    //     $title = "Portfolio Detail";
+    //     // $index = Index::first();
+    //     $footer = Footer::first();
+    //     return view('frontend.pages.portfolio_details')->with([
+    //         // 'index' => $index,
+    //         'footer' => $footer,
+    //         'title' => $title,
+    //     ]);
+    // }
 
 
 }

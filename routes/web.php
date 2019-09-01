@@ -11,6 +11,8 @@
 |
 */
 
+// FRONTEND
+
 Route::get('/', 'PagesController@index')->name('show_index_page');
 
 Route::get('/about', 'PagesController@about')->name('show_about_page');
@@ -28,6 +30,12 @@ Route::get('/works', 'PagesController@works')->name('show_works_page');
 Route::get('/single_blog/id={id}', 'PagesController@single_blog')->name('show_single_blog_page');
 
 Route::post('/send' , 'MessageController@send')->name('send_message');
+
+// BACKEND
+
+Route::get('/dashboard' , 'DashboardController@index')->name('show_dashboard_index');
+
+// AUTH
 
 Auth::routes();
 
