@@ -98,9 +98,9 @@
                   <i class="ni ni-single-copy-04 text-red"></i> Pages
                 </a>
                 <div class="dropdown-menu ml-5" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="{{route('show_dashboard_home_page')}}">Home</a>
-                  <a class="dropdown-item" href="{{route('show_dashboard_about_page')}}">About</a>
-                  <a class="dropdown-item" href="{{route('show_dashboard_work_page')}}">Works</a>
+                  <a class="dropdown-item nav-item" href="{{route('show_dashboard_home_page')}}">Home</a>
+                  <a class="dropdown-item nav-item" href="{{route('show_dashboard_about_page')}}">About</a>
+                  <a class="dropdown-item nav-item" href="{{route('show_dashboard_work_page')}}">Works</a>
                 </div>
             </div>
           </li>

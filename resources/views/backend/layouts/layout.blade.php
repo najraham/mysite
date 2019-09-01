@@ -50,6 +50,7 @@
     <!-- Header -->
     @include('backend.includes.header')
     <div class="container-fluid mt--9">
+      @include('backend.includes.messages')
       @yield('content')
       <!-- Footer -->
       @include('backend.includes.footer')

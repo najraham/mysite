@@ -41,6 +41,10 @@ Route::get('/editAbout' , 'DashboardController@about')->name('show_dashboard_abo
 
 Route::get('/editWork' , 'DashboardController@work')->name('show_dashboard_work_page');
 
+Route::post('/editedIndex' , 'DashboardController@editIndex')->name('edit_index');
+
+Route::post('/editedAbout' , 'DashboardController@editAbout')->name('edit_about');
+
 // AUTH
 
 Auth::routes();

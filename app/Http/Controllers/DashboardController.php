@@ -45,4 +45,28 @@ class DashboardController extends Controller
             'index' => $index,
             ]);
     }
+
+
+    public function editIndex(Request $request)
+    {
+        $index = Index::find($request->input('id'));
+        $index->first_name = $request->input('first_name');
+        $index->last_name = $request->input('last_name');
+        $index->slogan = $request->input('slogan');
+        $index->intro = $request->input('introduction');
+        $index->description = $request->input('description');
+        $index->save();
+
+        return redirect()->back()->with('success' , 'Value(s) edited....');
+    }
+
+    public function editAbout(Request $request)
+    {
+        $about = About::find($request->input('id'));
+        $about->title = $request->input('title');
+        $about->description = $request->input('description');
+        $about->save();
+
+        return redirect()->back()->with('success' , 'Value(s) edited....');
+    }
 }
