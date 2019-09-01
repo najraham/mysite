@@ -33,7 +33,13 @@ Route::post('/send' , 'MessageController@send')->name('send_message');
 
 // BACKEND
 
-Route::get('/dashboard' , 'DashboardController@index')->name('show_dashboard_index');
+Route::get('/dashboard' , 'DashboardController@dashboard')->name('show_dashboard_main_page');
+
+Route::get('/editIndex' , 'DashboardController@index')->name('show_dashboard_home_page');
+
+Route::get('/editAbout' , 'DashboardController@about')->name('show_dashboard_about_page');
+
+Route::get('/editWork' , 'DashboardController@work')->name('show_dashboard_work_page');
 
 // AUTH
 

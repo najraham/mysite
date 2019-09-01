@@ -19,21 +19,15 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">First name</th>
-                  <th scope="col">Last name</th>
-                  <th scope="col">Slogan</th>
-                  <th scope="col">Introduction</th>
+                  <th scope="col">Title</th>
                   <th scope="col">Description</th>
                   <th scope="col">Operations</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">{{$index->first_name}}</th>
-                  <td>{{$index->last_name}}</td>
-                  <td>{{$index->slogan}}</td>
-                  <td class="multiline_td">{{$index->intro}}</td>
-                  <td class="multiline_td">{{$index->description}}</td>
+                  <td class="multiline_td" scope="row">{{$about->title}}</td>
+                  <td class="multiline_td">{{$about->description}}</td>
                   <td></td>
                 </tr>
               </tbody>
