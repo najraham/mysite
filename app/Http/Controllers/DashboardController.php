@@ -38,11 +38,15 @@ class DashboardController extends Controller
 
     public function work()
     {
-        $title = "Work";
-        $index = Index::first();
-        return view('backend.pages.index')->with([
+        $title = "Projects";
+        $title1 = "Skills";
+        $projects = Project::all();
+        $skills = Skill::all();
+        return view('backend.pages.works')->with([
             'title' => $title,
-            'index' => $index,
+            'title1' => $title1,
+            'projects' => $projects,
+            'skills' => $skills,
             ]);
     }
 
@@ -55,6 +59,7 @@ class DashboardController extends Controller
         $index->slogan = $request->input('slogan');
         $index->intro = $request->input('introduction');
         $index->description = $request->input('description');
+        $index->image = $request->input('image');
         $index->save();
 
         return redirect()->back()->with('success' , 'Value(s) edited....');
@@ -68,5 +73,47 @@ class DashboardController extends Controller
         $about->save();
 
         return redirect()->back()->with('success' , 'Value(s) edited....');
+    }
+
+    public function editProject(Request $request)
+    {
+        $project = Project::find($request->input('id'));
+        $project->image = $request->input('image');
+        $project->title = $request->input('title');
+        $project->link = $request->input('link');
+        $project->save();
+
+        return redirect()->back()->with('success' , 'Value(s) edited..');
+    }
+
+    public function editSkill(Request $request)
+    {
+        $skill = Skill::find($request->input('id'));
+        $skill->name = $request->input('name');
+        $skill->percentage = $request->input('percentage');
+        $skill->save();
+
+        return redirect()->back()->with('success' , 'Value(s) edited..');
+    }
+
+    public function addProject(Request $request)
+    {
+        $project = new Project();
+        $project->image = $request->input('image');
+        $project->title = $request->input('title');
+        $project->link = $request->input('link');
+        $project->save();
+
+        return redirect()->back()->with('success' , 'New project added');
+    }
+
+    public function addSkill(Request $request)
+    {
+        $skill = new Skill();
+        $skill->name = $request->input('name');
+        $skill->percentage = $request->input('percentage');
+        $skill->save();
+
+        return redirect()->back()->with('success' , 'New skill added');
     }
 }

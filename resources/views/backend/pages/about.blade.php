@@ -9,9 +9,9 @@
               <div class="col">
                 <h3 class="mb-0">{{$title}}</h3>
               </div>
-              <div class="col text-right">
+              {{-- <div class="col text-right">
                 <a href="#!" class="btn btn-sm btn-primary">See all</a>
-              </div>
+              </div> --}}
             </div>
           </div>
           <div class="table-responsive">
@@ -46,7 +46,7 @@
   {{-- modal --}}
     <div class="col-md-4 col-lg-8">
       <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+        <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-body p-0">
               <div class="card bg-secondary shadow border-0">
@@ -69,7 +69,7 @@
                           <div class="input-group-prepend">
                               <span class="input-group-text"><i class="ni ni-diamond"></i></span>
                           </div>
-                          <textarea class="form-control" placeholder="Enter your brief description" name="description" type="text" id="desc" cols="30" rows="6">{{$about->description}}</textarea>
+                          <textarea id="article-ckeditor" class="form-control" placeholder="Enter your brief description" name="description" type="text" id="desc" cols="30" rows="6">{{$about->description}}</textarea>
                         </div>
                       </div>
                       <div class="text-right">

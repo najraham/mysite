@@ -93,21 +93,27 @@
             </a>
           </li>
           <li class="nav-item">
-              <div class="dropdown">
-                <a class="nav-link  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="ni ni-single-copy-04 text-red"></i> Pages
-                </a>
-                <div class="dropdown-menu ml-5" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item nav-item" href="{{route('show_dashboard_home_page')}}">Home</a>
-                  <a class="dropdown-item nav-item" href="{{route('show_dashboard_about_page')}}">About</a>
-                  <a class="dropdown-item nav-item" href="{{route('show_dashboard_work_page')}}">Works</a>
-                </div>
+            <div class="dropdown">
+              <a class="nav-link  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="ni ni-single-copy-04 text-red"></i> Pages
+              </a>
+              <div class="dropdown-menu ml-5" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item nav-item" href="{{route('show_dashboard_home_page')}}">Home</a>
+                <a class="dropdown-item nav-item" href="{{route('show_dashboard_about_page')}}">About</a>
+                <a class="dropdown-item nav-item" href="{{route('show_dashboard_work_page')}}">Works</a>
+              </div>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="./examples/maps.html">
-              <i class="ni ni-collection text-yellow"></i> Blogs
-            </a>
+            <div class="dropdown">
+              <a class="nav-link  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="ni ni-collection text-yellow"></i> Blogs
+              </a>
+              <div class="dropdown-menu ml-5" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item nav-item" href="{{route('show_dashboard_home_page')}}">Blogs</a>
+                <a class="dropdown-item nav-item" href="{{route('show_dashboard_about_page')}}">Add new blog</a>
+              </div>
+            </div>
           </li>
         </ul>
         {{-- <!-- Divider -->

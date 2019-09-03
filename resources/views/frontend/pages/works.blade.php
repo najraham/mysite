@@ -21,11 +21,14 @@
     {{-- projects --}}
 
     <!--::our_service part start::-->
-     @foreach ($projects as $project)
-        <section class="our_service padding_top">
-            <div class="container">
-                <div class="row align-items-center">
+    <section class="our_service padding_top">
+        <div class="container">
+            <div class="row align-items-center">
+                @foreach ($projects as $project)
                     <div class="col-lg-4 col-md-6">
+                        <div class="single_offer_img d-none d-md-block">
+                            <img src="{{asset('frontend/img/'.$project->image)}}" style="width:500px" alt="">
+                        </div>
                         <div class="single_offer_text text-center wedding">
                             <span class=""></span>
                             {{-- title --}}
@@ -36,15 +39,10 @@
                             <a href="{{$project->link}}" class="btn_1">read more</a>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-6">
-                        <div class="single_offer_img d-none d-md-block">
-                            <img src="{{asset('frontend/img/'.$project->image)}}" alt="">
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </section>
-     @endforeach
+        </div>
+    </section>
     <!--::our_service part end::-->
 
     <!--::pricing part start::-->
@@ -64,8 +62,8 @@
                 </div>
             </section>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-sm-6">
-                    @foreach ($skills as $skill)
+                @foreach ($skills as $skill)
+                    <div class="col-lg-4 col-sm-6">
                         <div class="single_pricing_part">
                             <div class="pricing_tittle">
                                 <i class="ti-crown" style="font-size:50px;"></i>
@@ -75,16 +73,14 @@
                             {{-- percentage --}}
                             <div class="percentage">
                                 <div class="progress">
-                                <div class="progress-bar color-1" role="progressbar" style="width: <?php $skill->percentage ?>}}"
+                                <div class="progress-bar color-1" role="progressbar" style="width:{{$skill->percentage}}%"
                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                   
-                </div>
-
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

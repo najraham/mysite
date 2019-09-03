@@ -45,6 +45,14 @@ Route::post('/editedIndex' , 'DashboardController@editIndex')->name('edit_index'
 
 Route::post('/editedAbout' , 'DashboardController@editAbout')->name('edit_about');
 
+Route::post('/editedProject' , 'DashboardController@editProject')->name('edit_project');
+
+Route::post('/editedSkill' , 'DashboardController@editSkill')->name('edit_skill');
+
+Route::post('/addProject' , 'DashboardController@addProject')->name('add_project');
+
+Route::post('/addSkill' , 'DashboardController@addSkill')->name('add_skill');
+
 // AUTH
 
 Auth::routes();

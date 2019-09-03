@@ -9,9 +9,9 @@
             <div class="col">
               <h3 class="mb-0">{{$title}}</h3>
             </div>
-            <div class="col text-right">
+            {{-- <div class="col text-right">
               <a href="#!" class="btn btn-sm btn-primary">See all</a>
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="table-responsive">
@@ -24,6 +24,7 @@
                 <th scope="col">Slogan</th>
                 <th scope="col">Introduction</th>
                 <th scope="col">Description</th>
+                <th scope="col">Image</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
@@ -34,6 +35,8 @@
                 <td>{{$index->slogan}}</td>
                 <td class="multiline_td">{{$index->intro}}</td>
                 <td class="multiline_td">{{$index->description}}</td>
+                <td>
+                  <img src="{{asset('frontend/img/'.$index->image)}}" style="width:80px" alt=""></td>
                 <td>
                   <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form">
                     <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
@@ -51,7 +54,7 @@
   {{-- modal --}}
   <div class="col-md-4 col-lg-8">
     <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-      <div class="modal-dialog modal- modal-dialog-centered " role="document">
+      <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body p-0">
             <div class="card bg-secondary shadow border-0">
@@ -87,21 +90,30 @@
                       </div>
                     </div>
                     <div class="form-group mb-3">
+                      <label for="image">Image</label>
+                      <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" value="{{$index->image}}" placeholder="Image" type="text" name="image" id="image">
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
                       <label for="intro">Introduction</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-glasses-2"></i></span>
                         </div>
-                        <textarea class="form-control" placeholder="Enter your short introduction" type="text" name="introduction" id="intro" cols="30" rows="3">{{$index->intro}}</textarea>
+                        <textarea class="form-control" placeholder="Enter your short introduction" type="text" name="introduction" id="article-ckeditor" cols="30" rows="2">{{$index->intro}}</textarea>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="desc">Description</label>
+                      <label for="description">Description</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-diamond"></i></span>
                         </div>
-                        <textarea class="form-control" placeholder="Enter your brief description" name="description" type="text" id="desc" cols="30" rows="6">{{$index->description}}</textarea>
+                        <textarea class="form-control" placeholder="Enter your brief description" name="description" type="text" id="article-ckeditor" cols="30" rows="3">{{$index->description}}</textarea>
                       </div>
                     </div>
                     <div class="text-right">
