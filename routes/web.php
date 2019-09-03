@@ -41,6 +41,8 @@ Route::get('/editAbout' , 'DashboardController@about')->name('show_dashboard_abo
 
 Route::get('/editWork' , 'DashboardController@work')->name('show_dashboard_work_page');
 
+Route::get('/editBlog' , 'DashboardController@blog')->name('show_dashboard_blog_page');
+
 Route::post('/editedIndex' , 'DashboardController@editIndex')->name('edit_index');
 
 Route::post('/editedAbout' , 'DashboardController@editAbout')->name('edit_about');
@@ -49,13 +51,19 @@ Route::post('/editedProject' , 'DashboardController@editProject')->name('edit_pr
 
 Route::post('/editedSkill' , 'DashboardController@editSkill')->name('edit_skill');
 
+Route::post('/editedBlog' , 'DashboardController@editBlog')->name('edit_blog');
+
 Route::post('/addProject' , 'DashboardController@addProject')->name('add_project');
 
 Route::post('/addSkill' , 'DashboardController@addSkill')->name('add_skill');
 
+Route::post('/addBlog' , 'DashboardController@addBlog')->name('add_blog');
+
 Route::get('/deleteSkill/id={id}' , 'DashboardController@deleteSkill')->name('delete_skill');
 
 Route::get('/deleteProject/id={id}' , 'DashboardController@deleteProject')->name('delete_project');
+
+Route::get('/deleteBlog/id={id}' , 'DashboardController@deleteBlog')->name('delete_blog');
 
 // AUTH
 

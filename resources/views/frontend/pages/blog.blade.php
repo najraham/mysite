@@ -47,7 +47,7 @@
                                         <h2>{{$blog->title}}</h2>
                                     </a>
                                     {{-- body --}}
-                                    <p>{{$blog->body}}</p>
+                                    <p>{!!$blog->body!!}</p>
                                     {{-- <ul class="blog-info-link"> --}}
                                         {{-- user --}}
                                         {{-- <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li> --}}

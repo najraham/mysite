@@ -106,13 +106,10 @@
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <a class="nav-link  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="ni ni-collection text-yellow"></i> Blogs
+              <a href="{{route('show_dashboard_blog_page')}}" class="nav-link">
+                <i class="ni ni-collection text-yellow"></i> Blogs
               </a>
-              <div class="dropdown-menu ml-5" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item nav-item" href="{{route('show_dashboard_home_page')}}">Blogs</a>
-                <a class="dropdown-item nav-item" href="{{route('show_dashboard_about_page')}}">Add new blog</a>
-              </div>
+              
             </div>
           </li>
         </ul>

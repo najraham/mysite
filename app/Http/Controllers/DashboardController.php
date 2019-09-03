@@ -7,6 +7,7 @@ use App\Index;
 use App\About;
 use App\Project;
 use App\Skill;
+use App\Blog;
 
 class DashboardController extends Controller
 {
@@ -50,6 +51,15 @@ class DashboardController extends Controller
             ]);
     }
 
+    public function blog()
+    {
+        $title = "Blogs";
+        $blogs = Blog::all();
+        return view('backend.pages.blog')->with([
+            'title' => $title,
+            'blogs' => $blogs,
+            ]);
+    }
 
     public function editIndex(Request $request)
     {
@@ -96,6 +106,17 @@ class DashboardController extends Controller
         return redirect()->back()->with('success' , 'Value(s) edited..');
     }
 
+    public function editBlog(Request $request)
+    {
+        $blog = Blog::find($request->input('id'));
+        $blog->image = $request->input('image');
+        $blog->title = $request->input('title');
+        $blog->body = $request->input('body');
+        $blog->save();
+
+        return redirect()->back()->with('success' , 'Value(s) edited..');
+    }
+
     public function addProject(Request $request)
     {
         $project = new Project();
@@ -117,6 +138,18 @@ class DashboardController extends Controller
         return redirect()->back()->with('success' , 'New skill added');
     }
 
+    public function addBlog(Request $request)
+    {
+        $blog = new Blog();
+        $blog->image = $request->input('image');
+        $blog->title = $request->input('title');
+        $blog->body = $request->input('body');
+        $blog->user_id = 1;
+        $blog->save();
+
+        return redirect()->back()->with('success' , 'New blog added');
+    }
+
     public function deleteProject($id)
     {
         $project = Project::find($id);
@@ -131,5 +164,13 @@ class DashboardController extends Controller
         $skill->delete();
 
         return redirect()->back()->with('error' , 'Skill deleted');
+    }
+
+    public function deleteBlog($id)
+    {
+        $skill = Blog::find($id);
+        $skill->delete();
+
+        return redirect()->back()->with('error' , 'Blog deleted');
     }
 }
