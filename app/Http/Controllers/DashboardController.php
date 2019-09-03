@@ -8,13 +8,24 @@ use App\About;
 use App\Project;
 use App\Skill;
 use App\Blog;
+use App\Message;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
         $title = "Dashboard";
-        return view('backend.pages.dash')->with('title' , $title);
+        $blogs = Blog::all();
+        $projects = Project::all();
+        $skills = Skill::all();
+        $messages = Message::all();
+        return view('backend.pages.dash')->with([
+            'title' => $title,
+            'blogs' => $blogs,
+            'projects' => $projects,
+            'skills' => $skills,
+            'messages' => $messages,
+            ]);
     }
 
     public function index()

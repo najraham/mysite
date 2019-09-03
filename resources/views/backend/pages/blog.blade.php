@@ -40,7 +40,7 @@
                                     <span class="btn-inner--text">Edit</span>
                                 </button>
                             </div>
-                            <div class="row">
+                            <div class="row mt-1">
                                 <form action="{{route('delete_blog' , ['id' => $blog->id])}}" method="get">
                                     <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>

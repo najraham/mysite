@@ -33,7 +33,7 @@
                             <article class="blog_item">
                                 <div class="blog_item_img">
                                     {{-- image --}}
-                                    <img class="card-img rounded-0" src="{{asset('frontend/img/blog/'.$blog->image)}}" alt="">
+                                    <img class="card-img rounded-0" src="{{asset('frontend/img/blog/'.$blog->image)}}" style="height:600px" alt="">
                                     {{-- created at --}}
                                     <a href="{{route('show_single_blog_page' , ['id' => $blog->id])}}" class="blog_item_date">
                                         <h3>{{$blog->created_at->format('d')}}</h3>
