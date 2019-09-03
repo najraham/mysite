@@ -53,6 +53,10 @@ Route::post('/addProject' , 'DashboardController@addProject')->name('add_project
 
 Route::post('/addSkill' , 'DashboardController@addSkill')->name('add_skill');
 
+Route::get('/deleteSkill/id={id}' , 'DashboardController@deleteSkill')->name('delete_skill');
+
+Route::get('/deleteProject/id={id}' , 'DashboardController@deleteProject')->name('delete_project');
+
 // AUTH
 
 Auth::routes();

@@ -116,4 +116,20 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('success' , 'New skill added');
     }
+
+    public function deleteProject($id)
+    {
+        $project = Project::find($id);
+        $project->delete();
+
+        return redirect()->back()->with('error' , 'Project deleted');
+    }
+
+    public function deleteSkill($id)
+    {
+        $skill = Skill::find($id);
+        $skill->delete();
+
+        return redirect()->back()->with('error' , 'Skill deleted');
+    }
 }

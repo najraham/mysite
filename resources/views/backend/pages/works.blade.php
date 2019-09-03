@@ -34,10 +34,23 @@
                     <td class="multiline_td">{{$project->title}}</td>
                     <td class="multiline_td">{{$project->link}}</td>
                     <td>
-                      <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form{{$project->id}}">
-                        <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
-                        <span class="btn-inner--text">Edit</span>
-                      </button>
+                      <div class="row">
+                        <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form{{$project->id}}">
+                          <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
+                          <span class="btn-inner--text">Edit</span>
+                        </button>
+                      </div>
+                      <div class="row mt-1">
+                        <form action="{{route('delete_project' , ['id' => $project->id])}}" method="get">
+                          <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
+                            <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                            <span class="btn-inner--text">Delete</span>
+                          </button>
+                        </form>
+                        
+                      </div>
+
+                      
                     </td>
                   </tr>
 
@@ -137,10 +150,20 @@
                           </div>
                         </td>
                         <td>
-                          <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form1{{$skill->id}}">
-                            <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
-                            <span class="btn-inner--text">Edit</span>
-                          </button>
+                          <div class="row">
+                            <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form1{{$skill->id}}">
+                              <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
+                              <span class="btn-inner--text">Edit</span>
+                            </button>
+                          </div>
+                          <div class="row mt-1">
+                            <form action="{{route('delete_skill' , ['id' => $skill->id])}}" method="get">
+                              <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
+                                <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                                <span class="btn-inner--text">Delete</span>
+                              </button>
+                            </form>
+                          </div>
                         </td>
                       </tr> 
 
