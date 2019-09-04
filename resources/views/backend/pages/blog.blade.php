@@ -10,7 +10,7 @@
               <h3 class="mb-0">{{$title}}</h3>
             </div>
             <div class="col text-right">
-              <a href="#" data-toggle="modal" data-target="#add_modal-form" class="btn btn-sm btn-primary">Add new</a>
+              <a href="#" data-toggle="modal" data-target="#add_modal-form" class="btn btn-sm btn-primary"><span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span><span class="btn-inner--text">Add new</span></a>
             </div>
           </div>
         </div>
@@ -19,9 +19,8 @@
           <table class="table align-items-center table-flush table-hover">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Image</th>
+                <th scope="col">Id</th>
                 <th scope="col">Title</th>
-                <th scope="col">Body</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
@@ -29,25 +28,15 @@
                 @foreach ($blogs as $blog)
                     <tr>
                         <th scope="row">
-                            <img src="{{asset('frontend/img/blog/'.$blog->image)}}" style="width:80px" alt="">
+                            {{$blog->id}}
+                            {{-- <img src="{{asset('storage/images/'.$blog->image)}}" style="width:80px" alt=""> --}}
                         </th>
                         <td class="multiline_td">{{$blog->title}}</td>
-                        <td class="multiline_td">{{$blog->body}}</td>
                         <td>
-                            <div class="row">
-                                <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form{{$blog->id}}">
-                                    <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
-                                    <span class="btn-inner--text">Edit</span>
-                                </button>
-                            </div>
-                            <div class="row mt-1">
-                                <form action="{{route('delete_blog' , ['id' => $blog->id])}}" method="get">
-                                    <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
-                                        <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
-                                        <span class="btn-inner--text">Delete</span>
-                                    </button>
-                                </form>
-                            </div>
+                            <a class="btn btn-sm btn-icon btn-3 btn-warning" type="button" href="{{route('show_dashboard_single_blog_page', ['id' => $blog->id])}}">
+                                <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                                <span class="btn-inner--text">Show In Detail</span>
+                            </a>
                         </td>
                     </tr>
                     {{-- modal edit --}}
@@ -58,7 +47,7 @@
                             <div class="modal-body p-0">
                                 <div class="card bg-secondary shadow border-0">
                                 <div class="card-body px-lg-5 py-lg-5">
-                                    <form role="form" method="POST" action="{{route('edit_blog')}}">
+                                    <form role="form" method="POST" action="{{route('edit_blog')}}" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" value="{{$blog->id}}" name="id">
                                         <div class="form-group mb-3">
@@ -67,7 +56,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                             </div>
-                                            <input class="form-control" value="{{$blog->image}}" placeholder="First Name" type="text" name="image" id="fname">
+                                            <img src="{{asset('storage/images/'.$blog->image)}}" style="width:80px" alt="">
+                                            <input class="form-control" value="{{$blog->image}}" placeholder="First Name" type="file" name="image" id="fname">
                                         </div>
                                         </div>
                                         <div class="form-group mb-3">

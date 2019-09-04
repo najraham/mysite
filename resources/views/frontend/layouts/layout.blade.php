@@ -30,7 +30,7 @@
         @if(strcmp($title , 'Index') == 0)
             .banner_part {
                 position: relative;
-                background-image: url("{{asset('frontend/img/'.$index->image)}}");
+                background-image: url('{{asset("storage/images/".$index->image)}}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center;

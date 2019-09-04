@@ -12,6 +12,19 @@ use App\Message;
 
 class DashboardController extends Controller
 {
+    public function single_blog($id)
+    {
+        $blog = Blog::find($id);
+        $title = "Single Blog";
+        return view('backend.pages.single_blog')->with([
+            'title' => $title,
+            'blog' => $blog,
+            ]);
+    }
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
     public function dashboard()
     {
         $title = "Dashboard";
@@ -74,13 +87,31 @@ class DashboardController extends Controller
 
     public function editIndex(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+        } 
+        else 
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $index = Index::find($request->input('id'));
         $index->first_name = $request->input('first_name');
         $index->last_name = $request->input('last_name');
         $index->slogan = $request->input('slogan');
         $index->intro = $request->input('introduction');
         $index->description = $request->input('description');
-        $index->image = $request->input('image');
+        $index->image = $fileNameToStore;
         $index->save();
 
         return redirect()->back()->with('success' , 'Value(s) edited....');
@@ -98,8 +129,26 @@ class DashboardController extends Controller
 
     public function editProject(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+        } 
+        else 
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $project = Project::find($request->input('id'));
-        $project->image = $request->input('image');
+        $project->image = $fileNameToStore;
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $project->save();
@@ -119,8 +168,26 @@ class DashboardController extends Controller
 
     public function editBlog(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+        } 
+        else 
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $blog = Blog::find($request->input('id'));
-        $blog->image = $request->input('image');
+        $blog->image = $fileNameToStore;
         $blog->title = $request->input('title');
         $blog->body = $request->input('body');
         $blog->save();
@@ -130,8 +197,26 @@ class DashboardController extends Controller
 
     public function addProject(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+        } 
+        else 
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $project = new Project();
-        $project->image = $request->input('image');
+        $project->image = $fileNameToStore;
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $project->save();
@@ -151,8 +236,26 @@ class DashboardController extends Controller
 
     public function addBlog(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+        } 
+        else 
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $blog = new Blog();
-        $blog->image = $request->input('image');
+        $blog->image = $fileNameToStore;
         $blog->title = $request->input('title');
         $blog->body = $request->input('body');
         $blog->user_id = 1;

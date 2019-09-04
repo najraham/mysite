@@ -29,7 +29,7 @@
                 @foreach ($projects as $project)
                   <tr>
                     <th scope="row">
-                      <img src="{{asset('frontend/img/'.$project->image)}}" style="width:60px" alt="">
+                      <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt="">
                     </th>
                     <td class="multiline_td">{{$project->title}}</td>
                     <td class="multiline_td">{{$project->link}}</td>
@@ -62,7 +62,7 @@
                           <div class="modal-body p-0">
                             <div class="card bg-secondary shadow border-0">
                               <div class="card-body px-lg-5 py-lg-5">
-                                <form role="form" method="POST" action="{{route('edit_project')}}">
+                                <form role="form" method="POST" action="{{route('edit_project')}}" enctype="multipart/form-data">
                                   @csrf
                                   <input type="hidden" value="{{$project->id}}" name="id">
                                     <div class="form-group mb-3">
@@ -71,7 +71,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                         </div>
-                                        <input class="form-control" value="{{$project->image}}" placeholder="First Name" type="text" name="image" id="fname">
+                                        <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt="">
+                                        <input class="form-control" type="file" name="image" id="fname">
                                       </div>
                                     </div>
                                     <div class="form-group mb-3">
@@ -236,7 +237,8 @@
                       <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                       </div>
-                      <input class="form-control" placeholder="Image" type="text" name="image" id="fname">
+                      <img src="{{asset('frontend/img/'.$project->image)}}" style="width:60px" alt="">
+                      <input class="form-control" placeholder="Image" type="file" name="image" id="fname">
                     </div>
                   </div>
                   <div class="form-group mb-3">

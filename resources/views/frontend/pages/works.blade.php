@@ -27,7 +27,7 @@
                 @foreach ($projects as $project)
                     <div class="col-lg-4 col-md-6">
                         <div class="single_offer_img d-none d-md-block">
-                            <img src="{{asset('frontend/img/'.$project->image)}}" style="width:500px" alt="">
+                            <img src="{{asset('storage/images/'.$project->image)}}" style="width:500px" alt="">
                         </div>
                         <div class="single_offer_text text-center wedding">
                             <span class=""></span>
@@ -73,7 +73,7 @@
                             {{-- percentage --}}
                             <div class="percentage">
                                 <div class="progress">
-                                <div class="progress-bar color-1" role="progressbar" style="width:{{$skill->percentage}}%"
+                                <div class="progress-bar color-1" role="progressbar" style="width:{{$skill->percentage}}%; background-color: #ff4800"
                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>

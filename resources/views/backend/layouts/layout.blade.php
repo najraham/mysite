@@ -52,7 +52,10 @@
     <div class="container-fluid mt--9">
       @include('backend.includes.messages')
       @yield('content')
-      <!-- Footer -->
+      
+    </div>
+    <!-- Footer -->
+    <div class="container-fluid">
       @include('backend.includes.footer')
     </div>
   </div>

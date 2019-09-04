@@ -36,7 +36,7 @@
                 <td class="multiline_td">{{$index->intro}}</td>
                 <td class="multiline_td">{{$index->description}}</td>
                 <td>
-                  <img src="{{asset('frontend/img/'.$index->image)}}" style="width:80px" alt=""></td>
+                  <img src="{{asset('storage/images/'.$index->image)}}" style="width:80px" alt=""></td>
                 <td>
                   <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form">
                     <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
@@ -59,7 +59,7 @@
           <div class="modal-body p-0">
             <div class="card bg-secondary shadow border-0">
               <div class="card-body px-lg-5 py-lg-5">
-                <form role="form" method="POST" action="{{route('edit_index')}}">
+                <form role="form" method="POST" action="{{route('edit_index')}}" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" value="{{$index->id}}" name="id">
                     <div class="form-group mb-3">
@@ -95,7 +95,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" value="{{$index->image}}" placeholder="Image" type="text" name="image" id="image">
+                        <img src="{{asset('frontend/img/'.$index->image)}}" style="width:80px" alt=""></td>
+                        <input class="form-control" placeholder="{{$index->image}}" type="file" name="image" id="image">
                       </div>
                     </div>
                     <div class="form-group mb-3">
@@ -104,7 +105,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-glasses-2"></i></span>
                         </div>
-                        <textarea class="form-control" placeholder="Enter your short introduction" type="text" name="introduction" id="article-ckeditor" cols="30" rows="2">{{$index->intro}}</textarea>
+                        <textarea class="form-control" placeholder="Enter your short introduction" type="text" name="introduction" cols="30" rows="2">{{$index->intro}}</textarea>
                       </div>
                     </div>
                     <div class="form-group">
@@ -113,7 +114,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-diamond"></i></span>
                         </div>
-                        <textarea class="form-control" placeholder="Enter your brief description" name="description" type="text" id="article-ckeditor" cols="30" rows="3">{{$index->description}}</textarea>
+                        <textarea class="form-control" placeholder="Enter your brief description" name="description" type="text"  cols="30" rows="3">{{$index->description}}</textarea>
                       </div>
                     </div>
                     <div class="text-right">

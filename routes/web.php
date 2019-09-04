@@ -43,6 +43,8 @@ Route::get('/editWork' , 'DashboardController@work')->name('show_dashboard_work_
 
 Route::get('/editBlog' , 'DashboardController@blog')->name('show_dashboard_blog_page');
 
+Route::get('/singleBlog/id={id}' , 'DashboardController@single_blog')->name('show_dashboard_single_blog_page');
+
 Route::post('/editedIndex' , 'DashboardController@editIndex')->name('edit_index');
 
 Route::post('/editedAbout' , 'DashboardController@editAbout')->name('edit_about');
