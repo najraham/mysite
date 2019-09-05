@@ -35,6 +35,10 @@ Route::post('/send' , 'MessageController@send')->name('send_message');
 
 Route::get('/dashboard' , 'DashboardController@dashboard')->name('show_dashboard_main_page');
 
+Route::get('/editContact' , 'DashboardController@contact')->name('show_dashboard_contact_page');
+
+Route::get('/editLink' , 'DashboardController@link')->name('show_dashboard_link_page');
+
 Route::get('/editIndex' , 'DashboardController@index')->name('show_dashboard_home_page');
 
 Route::get('/editAbout' , 'DashboardController@about')->name('show_dashboard_about_page');
@@ -66,6 +70,8 @@ Route::get('/deleteSkill/id={id}' , 'DashboardController@deleteSkill')->name('de
 Route::get('/deleteProject/id={id}' , 'DashboardController@deleteProject')->name('delete_project');
 
 Route::get('/deleteBlog/id={id}' , 'DashboardController@deleteBlog')->name('delete_blog');
+
+Route::post('/updateContact' , 'DashboardController@updateContact')->name('update_contact');
 
 // AUTH
 

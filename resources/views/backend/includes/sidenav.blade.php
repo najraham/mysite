@@ -89,29 +89,53 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-          <a class=" nav-link active " href="{{route('show_dashboard_main_page')}}"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+            <a class=" nav-link @if($title == "Dashboard") active @endif " href="{{route('show_dashboard_main_page')}}"> 
+              <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <div class="dropdown">
-              <a class="nav-link  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?php  $page_titles = ['Index','About', 'Work']; ?>
+              <a class=" @if( in_array($title, $page_titles) ) nav-link @else nav-link collapsed" @endif 
+                href="#pages" data-toggle="collapse" role="button" 
+                @if(in_array($title, $page_titles) ) aria-expanded="true" @else aria-expanded="false" @endif
+                aria-controls="navbar-examples">
                 <i class="ni ni-single-copy-04 text-red"></i> Pages
               </a>
-              <div class="dropdown-menu ml-5" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item nav-item" href="{{route('show_dashboard_home_page')}}">Home</a>
-                <a class="dropdown-item nav-item" href="{{route('show_dashboard_about_page')}}">About</a>
-                <a class="dropdown-item nav-item" href="{{route('show_dashboard_work_page')}}">Works</a>
-              </div>
+              <div @if( in_array($title, $page_titles) ) class="collapse show" @else class="collapse" @endif id="pages">
+                <ul class="nav flex-column">
+                  <li class="nav-item @if($title == "Index") active @endif">
+                    <a href="{{route('show_dashboard_home_page')}}" class="nav-link">
+                      Home
+                    </a>
+                  </li>
+                  <li class="nav-item @if($title == "About") active @endif">
+                    <a href="{{route('show_dashboard_about_page')}}" class="nav-link">
+                      About
+                    </a>
+                  </li>
+                  <li class="nav-item @if($title == "Work") active @endif">
+                    <a href="{{route('show_dashboard_work_page')}}" class="nav-link">
+                      Work
+                    </a>
+                  </li>
+                </ul>
             </div>
           </li>
           <li class="nav-item">
-            <div class="dropdown">
-              <a href="{{route('show_dashboard_blog_page')}}" class="nav-link">
-                <i class="ni ni-collection text-yellow"></i> Blogs
-              </a>
-              
-            </div>
+            <a href="{{route('show_dashboard_blog_page')}}" class="nav-link @if($title == "Blogs") active @endif">
+              <i class="ni ni-collection text-yellow"></i> Blogs
+            </a>
           </li>
+          <li class="nav-item">
+            <a class=" nav-link @if($title == "Contact") active @endif" href="{{route('show_dashboard_contact_page')}}"> 
+                <i class="fas fa-address-card text-pink"></i> Contact
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link @if($title == "Link") active @endif" href="{{route('show_dashboard_link_page')}}"> 
+                  <i class="fas fa-link text-orange"></i> Link
+              </a>
+            </li>
         </ul>
         {{-- <!-- Divider -->
         <hr class="my-3">

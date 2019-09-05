@@ -62,6 +62,7 @@
                 <form role="form" method="POST" action="{{route('edit_index')}}" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" value="{{$index->id}}" name="id">
+                  <input type="hidden" value="{{$index->image}}" name="preimage">
                     <div class="form-group mb-3">
                       <label for="fname">First Name</label>
                       <div class="input-group input-group-alternative">
@@ -95,7 +96,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <img src="{{asset('frontend/img/'.$index->image)}}" style="width:80px" alt=""></td>
+                        <img src="{{asset('storage/images/'.$index->image)}}" style="width:80px" alt=""></td>
                         <input class="form-control" placeholder="{{$index->image}}" type="file" name="image" id="image">
                       </div>
                     </div>

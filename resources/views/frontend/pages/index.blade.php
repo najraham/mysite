@@ -14,7 +14,7 @@
                             <h1>{{$index->first_name}} <span>{{$index->last_name}}</span></h1>
                             {{-- slogan or something --}}
                             <p>{{$index->slogan}}</p>
-                            <a href="#" class="btn_1">view work</a>
+                            <a href="{{route('show_works_page')}}" class="btn_1">view works</a>
                         </div>
                     </div>
                 </div>

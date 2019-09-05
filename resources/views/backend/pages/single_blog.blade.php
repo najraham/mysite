@@ -5,32 +5,40 @@
         <div class="col-xl-12 mb-5 mb-xl-0">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <h3 class="mb-0">{{$blog->title}}</h3>
+                    <div class="container">
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <h3 class="mb-0">{{$blog->title}}</h3>
+                            </div>
                         </div>
-                        <div class="col-lg-2 justify-content-right">
-                            <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form{{$blog->id}}">
-                                <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
-                                <span class="btn-inner--text">Edit</span>
-                            </button>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{asset('storage/images/'.$blog->image)}}" style="height:200px">
+                            </div>
+                            <div class="col-md-8">
+                                <p>
+                                    {!!$blog->body!!}
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-lg-2 justify-content-right">
-                            <form action="{{route('delete_blog' , ['id' => $blog->id])}}" method="get">
-                                <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
-                                    <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
-                                    <span class="btn-inner--text">Delete</span>
+                        <div class="row">
+                            <div class="col-md-1 offset-md-10">
+                                <button class="btn btn-sm btn-icon btn-3 btn-primary" type="button" data-toggle="modal" data-target="#modal-form{{$blog->id}}">
+                                    <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
+                                    <span class="btn-inner--text">Edit</span>
                                 </button>
-                            </form>
+                            </div>
+                            <div class="col-md-1">
+                                <form action="{{route('delete_blog' , ['id' => $blog->id])}}" method="get">
+                                    <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
+                                        <span class="btn-inner--icon"><i class="fas fa-trash-alt"></i></span>
+                                        <span class="btn-inner--text">Delete</span>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+
                     </div>
-                    <div class="row">
-                        <img src="{{asset('storage/images/'.$blog->image)}}" style="float:right; width:400px; height:200px">
-                        <p style="float:left">
-                            {!!$blog->body!!}
-                        </p>
-                    </div>
-                    
                 </div>
                 
             </div>
@@ -48,6 +56,7 @@
                     <form role="form" method="POST" action="{{route('edit_blog')}}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" value="{{$blog->id}}" name="id">
+                    <input type="hidden" value="{{$blog->image}}" name="preimage">
                         <div class="form-group mb-3">
                         <label for="fname">Image</label>
                         <div class="input-group input-group-alternative">

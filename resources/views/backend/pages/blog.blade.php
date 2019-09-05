@@ -29,66 +29,15 @@
                     <tr>
                         <th scope="row">
                             {{$blog->id}}
-                            {{-- <img src="{{asset('storage/images/'.$blog->image)}}" style="width:80px" alt=""> --}}
                         </th>
                         <td class="multiline_td">{{$blog->title}}</td>
                         <td>
-                            <a class="btn btn-sm btn-icon btn-3 btn-warning" type="button" href="{{route('show_dashboard_single_blog_page', ['id' => $blog->id])}}">
+                            <a class="btn btn-sm btn-warning" href="{{route('show_dashboard_single_blog_page', ['id' => $blog->id])}}">
                                 <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
                                 <span class="btn-inner--text">Show In Detail</span>
                             </a>
                         </td>
                     </tr>
-                    {{-- modal edit --}}
-                    <div class="col-md-4 col-lg-8">
-                        <div class="modal fade" id="modal-form{{$blog->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                        <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card bg-secondary shadow border-0">
-                                <div class="card-body px-lg-5 py-lg-5">
-                                    <form role="form" method="POST" action="{{route('edit_blog')}}" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" value="{{$blog->id}}" name="id">
-                                        <div class="form-group mb-3">
-                                        <label for="fname">Image</label>
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                            </div>
-                                            <img src="{{asset('storage/images/'.$blog->image)}}" style="width:80px" alt="">
-                                            <input class="form-control" value="{{$blog->image}}" placeholder="First Name" type="file" name="image" id="fname">
-                                        </div>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                        <label for="lname">Title</label>
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                            </div>
-                                            <input class="form-control" value="{{$blog->title}}" placeholder="Last Name" type="text" name="title" id="lname">
-                                        </div>
-                                        </div>
-                                        <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-diamond"></i></span>
-                                            </div>
-                                            <textarea class="form-control" placeholder="Enter your brief description" name="body" type="text" id="article-ckeditor" cols="30" rows="3">{{$blog->body}}</textarea>
-                                        </div>
-                                        </div>
-                                        <div class="text-right">
-                                            <button type="submit" class="btn btn-primary my-4">Save</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
     
                 @endforeach
             </tbody>
@@ -106,7 +55,7 @@
             <div class="modal-body p-0">
                 <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
-                    <form role="form" method="POST" action="{{route('add_blog')}}">
+                    <form role="form" method="POST" action="{{route('add_blog')}}" enctype="multipart/form-data">
                     @csrf
                         <div class="form-group mb-3">
                         <label for="fname">Image</label>
@@ -114,7 +63,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                             </div>
-                            <input class="form-control" placeholder="Image" type="text" name="image" id="fname">
+                            <input class="form-control" placeholder="Image" type="file" name="image" id="fname">
                         </div>
                         </div>
                         <div class="form-group mb-3">

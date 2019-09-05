@@ -8,7 +8,7 @@
         <div class="card bg-default shadow">
           <div class=" row card-header bg-transparent border-0">
             <div class="col">
-              <h3 class="text-white mb-0">{{$title}}</h3>
+              <h3 class="text-white mb-0">{{$title2}}</h3>
             </div>
             <div class="col text-right">
               <a href="#" data-toggle="modal" data-target="#add_project" class="btn btn-sm btn-success">Add new</a>
@@ -19,9 +19,8 @@
             <table class="table align-items-center table-dark table-flush table-hover">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Image</th>
+                  <th scope="col">Id</th>
                   <th scope="col">Title</th>
-                  <th scope="col">Link</th>
                   <th scope="col">Operations</th>
                 </tr>
               </thead>
@@ -29,27 +28,63 @@
                 @foreach ($projects as $project)
                   <tr>
                     <th scope="row">
-                      <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt="">
+                      {{$project->id}}
+                      {{-- <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt=""> --}}
                     </th>
                     <td class="multiline_td">{{$project->title}}</td>
-                    <td class="multiline_td">{{$project->link}}</td>
                     <td>
-                      <div class="row">
-                        <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#modal-form{{$project->id}}">
-                          <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
-                          <span class="btn-inner--text">Edit</span>
-                        </button>
-                      </div>
-                      <div class="row mt-1">
-                        <form action="{{route('delete_project' , ['id' => $project->id])}}" method="get">
-                          <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
-                            <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
-                            <span class="btn-inner--text">Delete</span>
-                          </button>
-                        </form>
-                        
-                      </div>
-
+                      <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#show_detail{{$project->id}}">
+                        <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
+                        <span class="btn-inner--text">Show Details</span>
+                      </button>
+                      
+                      {{-- show detail modal --}}
+                        <div class="col-md-4 col-lg-8">
+                          <div class="modal fade" id="show_detail{{$project->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                            <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+                              <div class="modal-content">
+                                <div class="modal-body p-0">
+                                  <div class="card bg-secondary shadow border-0">
+                                    <div class="card-body px-lg-5 py-lg-5">
+                                      <div>
+                                        <h1>{{$project->title}}</h1>
+                                      </div>
+                                      <div>
+                                        <img src="{{asset('storage/images/'.$project->image)}}" style="width:200px" alt="">
+                                      </div>
+                                      <div class="mt-2">
+                                        <h3>Link</h3>
+                                        <h5>{{$project->link}}</h5>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-2 offset-md-7">
+                                            <button class="btn btn-sm btn-icon btn-3 btn-primary" onclick="show_edit_form('{{$project->id}}')">
+                                                <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
+                                                <span class="btn-inner--text">Edit</span>
+                                            </button>
+                                            <script>
+                                              function show_edit_form(project_id) {
+                                                  $('#show_detail' + project_id).modal('hide');
+                                                  $('#modal-form' + project_id).modal('show');
+                                              }
+                                            </script>
+                                        </div>
+                                        <div class="col-md-2">
+                                          <form action="{{route('delete_project' , ['id' => $project->id])}}" method="get">
+                                              <button class="btn btn-sm btn-icon btn-3 btn-danger" type="submit">
+                                                  <span class="btn-inner--icon"><i class="fas fa-trash-alt"></i></span>
+                                                  <span class="btn-inner--text">Delete</span>
+                                              </button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       
                     </td>
                   </tr>
@@ -65,6 +100,7 @@
                                 <form role="form" method="POST" action="{{route('edit_project')}}" enctype="multipart/form-data">
                                   @csrf
                                   <input type="hidden" value="{{$project->id}}" name="id">
+                                  <input type="hidden" value="{{$project->image}}" name="preimage">
                                     <div class="form-group mb-3">
                                       <label for="fname">Image</label>
                                       <div class="input-group input-group-alternative">

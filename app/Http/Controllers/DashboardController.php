@@ -9,6 +9,7 @@ use App\Project;
 use App\Skill;
 use App\Blog;
 use App\Message;
+use App\Footer;
 
 class DashboardController extends Controller
 {
@@ -22,7 +23,8 @@ class DashboardController extends Controller
             ]);
     }
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->middleware('auth');
     }
     public function dashboard()
@@ -63,12 +65,14 @@ class DashboardController extends Controller
 
     public function work()
     {
-        $title = "Projects";
+        $title = "Work";
+        $title2 = "Projects";
         $title1 = "Skills";
         $projects = Project::all();
         $skills = Skill::all();
         return view('backend.pages.works')->with([
             'title' => $title,
+            'title2' => $title2,
             'title1' => $title1,
             'projects' => $projects,
             'skills' => $skills,
@@ -86,7 +90,9 @@ class DashboardController extends Controller
     }
 
     public function editIndex(Request $request)
-    {
+    {        
+        $index = Index::find($request->input('id'));
+
         if($request->hasFile('image'))
         {
             // Get filename with the extension
@@ -99,19 +105,20 @@ class DashboardController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+
+            $index->image = $fileNameToStore;
         } 
         else 
         {
-            $fileNameToStore = 'noimage.jpg';
+            $index->image = $request->input('preimage');
         }
 
-        $index = Index::find($request->input('id'));
         $index->first_name = $request->input('first_name');
         $index->last_name = $request->input('last_name');
         $index->slogan = $request->input('slogan');
         $index->intro = $request->input('introduction');
         $index->description = $request->input('description');
-        $index->image = $fileNameToStore;
+        
         $index->save();
 
         return redirect()->back()->with('success' , 'Value(s) edited....');
@@ -129,6 +136,8 @@ class DashboardController extends Controller
 
     public function editProject(Request $request)
     {
+        $project = Project::find($request->input('id'));
+
         if($request->hasFile('image'))
         {
             // Get filename with the extension
@@ -141,14 +150,16 @@ class DashboardController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+
+            $project->image = $fileNameToStore;
         } 
         else 
         {
-            $fileNameToStore = 'noimage.jpg';
+            $project->image = $request->input('preimage');
         }
 
-        $project = Project::find($request->input('id'));
-        $project->image = $fileNameToStore;
+        
+        
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $project->save();
@@ -168,6 +179,8 @@ class DashboardController extends Controller
 
     public function editBlog(Request $request)
     {
+        $blog = Blog::find($request->input('id'));
+
         if($request->hasFile('image'))
         {
             // Get filename with the extension
@@ -180,14 +193,14 @@ class DashboardController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+
+            $blog->image = $fileNameToStore;
         } 
         else 
         {
-            $fileNameToStore = 'noimage.jpg';
+            $blog->image = $request->input('preimage');
         }
 
-        $blog = Blog::find($request->input('id'));
-        $blog->image = $fileNameToStore;
         $blog->title = $request->input('title');
         $blog->body = $request->input('body');
         $blog->save();
@@ -269,7 +282,7 @@ class DashboardController extends Controller
         $project = Project::find($id);
         $project->delete();
 
-        return redirect()->back()->with('error' , 'Project deleted');
+        return redirect()->back()->with('success' , 'Project deleted');
     }
 
     public function deleteSkill($id)
@@ -277,7 +290,7 @@ class DashboardController extends Controller
         $skill = Skill::find($id);
         $skill->delete();
 
-        return redirect()->back()->with('error' , 'Skill deleted');
+        return redirect()->back()->with('success' , 'Skill deleted');
     }
 
     public function deleteBlog($id)
@@ -285,6 +298,40 @@ class DashboardController extends Controller
         $skill = Blog::find($id);
         $skill->delete();
 
-        return redirect()->back()->with('error' , 'Blog deleted');
+        return redirect('/editBlog')->with('success' , 'Blog deleted');
+    }
+
+    public function contact()
+    {
+        $title = "Contact";
+        $contact = Footer::first();
+
+        return view('backend.pages.contact')->with([
+            'title' => $title,
+            'contact' => $contact,
+        ]);
+    }
+
+    public function updateContact(Request $request)
+    {
+        $contact = Footer::find($request->input('id'));
+        $contact->address = $request->input('address');
+        $contact->phone = $request->input('phone');
+        $contact->email = $request->input('email');
+        $contact->website = $request->input('website');
+        $contact->save();
+
+        return redirect()->back()->with('success' , 'Value(s) updated');
+    }
+
+    public function link()
+    {
+        $title = "Link";
+        $link = Footer::first();
+
+        return view('backend.pages.link')->with([
+            'title' => $title,
+            'link' => $link,
+        ]);
     }
 }
