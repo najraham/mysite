@@ -27,8 +27,8 @@
                         {{-- heading --}}
                         <h2>{{$about->title}}</h2>
                         {{-- description --}}
-                        <p>{{$about->description}}</p>
-                        <a href="#" class="btn_2">read more</a>
+                        <p>{!!$about->description!!}</p>
+                        <a href="{{route('show_works_page')}}" class="btn_2">See my projects?</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
     <!-- intro_video_bg part start-->
 
     <!--::review_part part start::-->
-    <section class="review_part section_padding">
+    {{-- <section class="review_part section_padding">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6 col-lg-6">
@@ -68,19 +68,18 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="review_slider owl-carousel">
                         @foreach ($reviews as $review)
-                            <div class="review_part_text">
+                            <div class="review_part_text"> --}}
                                 {{-- heading --}}
-                                <h2>{{$review->heading}}</h2>
+                                {{-- <h2>{{$review->title}}</h2> --}}
                                 {{-- description --}}
-                                <p>{{$review->description}}</p>
-                                <h3>Mitchel Jeferson, <span>CEO of softking</span> </h3>
-                            </div>
+                                {{-- <p>{!!$review->description!!}</p> --}}
+                            {{-- </div>
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--::review_part part end::-->
 
 @endsection

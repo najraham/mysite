@@ -81,7 +81,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-diamond"></i></span>
                             </div>
-                            <textarea class="form-control" placeholder="Enter blog description" name="body" type="text" id="article-ckeditor" cols="30" rows="3"></textarea>
+                            <textarea class="form-control" placeholder="Enter blog description" name="body" type="text" cols="30" rows="3"></textarea>
                         </div>
                         </div>
                         <div class="text-right">

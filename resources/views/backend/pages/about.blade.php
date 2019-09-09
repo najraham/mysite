@@ -69,7 +69,7 @@
                           <div class="input-group-prepend">
                               <span class="input-group-text"><i class="ni ni-diamond"></i></span>
                           </div>
-                          <textarea id="article-ckeditor" class="form-control" placeholder="Enter your brief description" name="description" type="text" id="desc" cols="30" rows="6">{{$about->description}}</textarea>
+                          <textarea class="form-control" placeholder="Enter your brief description" name="description" type="text" id="desc" cols="30" rows="6">{{$about->description}}</textarea>
                         </div>
                       </div>
                       <div class="text-right">

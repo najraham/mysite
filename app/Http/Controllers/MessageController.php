@@ -14,6 +14,7 @@ class MessageController extends Controller
         $message->email = $request->input('email');
         $message->subject = $request->input('subject');
         $message->message = $request->input('message');
+        $message->status = "unread";
         $message->save();
 
         return redirect()->back()->with('success' , 'Message sent succesfully');

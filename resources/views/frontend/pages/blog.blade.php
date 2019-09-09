@@ -31,30 +31,34 @@
                     <div class="blog_left_sidebar">
                         @foreach ($blogs as $blog)
                             <article class="blog_item">
-                                <div class="blog_item_img">
-                                    {{-- image --}}
-                                    <img class="card-img rounded-0" src="{{asset('storage/images/'.$blog->image)}}" style="height:600px" alt="">
-                                    {{-- created at --}}
-                                    <a href="{{route('show_single_blog_page' , ['id' => $blog->id])}}" class="blog_item_date">
-                                        <h3>{{$blog->created_at->format('d')}}</h3>
-                                        <p>{{$blog->created_at->format('M')}}</p>
-                                    </a>
-                                </div>
-
-                                <div class="blog_details">
-                                    <a class="d-inline-block" href="{{route('show_single_blog_page' , ['id' => $blog->id])}}">
-                                        {{-- title --}}
-                                        <h2>{{$blog->title}}</h2>
-                                    </a>
-                                    {{-- body --}}
-                                    <p>{!!$blog->body!!}</p>
-                                    {{-- <ul class="blog-info-link"> --}}
-                                        {{-- user --}}
-                                        {{-- <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li> --}}
-                                        {{-- <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li> --}}
-                                    {{-- </ul> --}}
+                                <div class="row">
+                                    <div class="blog_item_img col-md-4">
+                                        {{-- image --}}
+                                        <img class="card-img rounded-0" src="{{asset('storage/images/'.$blog->image)}}" style="width:300px" alt="">
+                                        {{-- created at --}}
+                                        <a href="{{route('show_single_blog_page' , ['id' => $blog->id])}}" class="blog_item_date">
+                                            <h3>{{$blog->created_at->format('d')}}</h3>
+                                            <p>{{$blog->created_at->format('M')}}</p>
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="blog_details col-md-8">
+                                        <a class="d-inline-block" href="{{route('show_single_blog_page' , ['id' => $blog->id])}}">
+                                            {{-- title --}}
+                                            <h2>{{$blog->title}}</h2>
+                                        </a>
+                                        {{-- body --}}
+                                        <p>{!!$blog->body!!}</p>
+                                        {{-- <ul class="blog-info-link"> --}}
+                                            {{-- user --}}
+                                            {{-- <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li> --}}
+                                            {{-- <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li> --}}
+                                        {{-- </ul> --}}
+                                    </div>
+                                    
                                 </div>
                             </article>
+                            <hr>
                         @endforeach
                        
                         {{-- <nav class="blog-pagination justify-content-center d-flex">

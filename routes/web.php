@@ -37,6 +37,8 @@ Route::get('/dashboard' , 'DashboardController@dashboard')->name('show_dashboard
 
 Route::get('/editContact' , 'DashboardController@contact')->name('show_dashboard_contact_page');
 
+Route::get('/editReview' , 'DashboardController@review')->name('show_dashboard_review_page');
+
 Route::get('/editLink' , 'DashboardController@link')->name('show_dashboard_link_page');
 
 Route::get('/editIndex' , 'DashboardController@index')->name('show_dashboard_home_page');
@@ -65,6 +67,8 @@ Route::post('/addSkill' , 'DashboardController@addSkill')->name('add_skill');
 
 Route::post('/addBlog' , 'DashboardController@addBlog')->name('add_blog');
 
+Route::post('/addReview' , 'DashboardController@addReview')->name('add_review');
+
 Route::get('/deleteSkill/id={id}' , 'DashboardController@deleteSkill')->name('delete_skill');
 
 Route::get('/deleteProject/id={id}' , 'DashboardController@deleteProject')->name('delete_project');
@@ -72,6 +76,8 @@ Route::get('/deleteProject/id={id}' , 'DashboardController@deleteProject')->name
 Route::get('/deleteBlog/id={id}' , 'DashboardController@deleteBlog')->name('delete_blog');
 
 Route::post('/updateContact' , 'DashboardController@updateContact')->name('update_contact');
+
+Route::get('/messageStatus/id={id}' , 'DashboardController@changeMessageStatus')->name('change_message_status');
 
 // AUTH
 

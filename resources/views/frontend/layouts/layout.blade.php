@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{$title}}</title>
-    <link rel="icon" href="{{asset('frontend/img/favicon.png')}}">
+    <link rel="icon" href="{{asset('frontend/img/logo.png')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
     <!-- animate CSS -->

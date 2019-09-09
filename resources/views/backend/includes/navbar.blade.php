@@ -16,11 +16,41 @@
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
         <li class="nav-item dropdown">
+          <a class="nav-link pr-0 notification" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="media align-items-center">
+              <div class="media-body ml-2 d-none d-lg-block">
+                    <i class="far fa-envelope"></i>
+                    @if (count($messages)>0)
+                      <span class="badge badge-danger">{{count($messages)}}</span>                          
+                    @endif
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" style="width:400px">
+            <div class=" dropdown-header noti-title">
+              <h4 class="text-overflow m-0">Messages</h4>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="container">
+              @if (count($messages)>0)
+                @foreach ($messages as $message)
+
+                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#modal-form{{$message->id}}">
+                      <h5 class="text-primary">From : {{$message->name}}</h5>
+                      <h6>Subject : {{$message->subject}}</h6>
+                      <h6 class="text-green">{{$message->created_at->diffForHumans()}}</h6>
+                    </a>
+                  <div class="dropdown-divider"></div>
+                @endforeach                
+              @else              
+                <h5>You have no messages</h5>
+              @endif
+              </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
-              <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{{asset('backend/img/theme/team-4-800x800.jpg')}}">
-              </span>
               <div class="media-body ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm  font-weight-bold">{{Auth::user()->name}}</span>
               </div>
@@ -30,22 +60,6 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            {{-- <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-single-02"></i>
-              <span>My profile</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-settings-gear-65"></i>
-              <span>Settings</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
-            </a> --}}
             <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
@@ -61,3 +75,33 @@
       </ul>
     </div>
   </nav>
+
+
+
+  {{-- modal --}}
+@foreach ($messages as $message)  
+    <div class="modal fade" id="modal-form{{$message->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div>From : {{$message->name}} ( {{$message->email}} )</div>
+                <div>Subject : {{$message->subject}}</div>
+                <div>Message : {{$message->message}}</div>
+                <div class="text-right">
+                    <button class="btn btn-primary my-4" onclick="exit_modal('{{$message->id}}')">OK</button>
+                    <script>
+                      function exit_modal(id) {
+                          $('#modal-form'+id).modal('hide');
+                          window.location.href="/messageStatus/id=" + id;
+                      }
+                    </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+@endforeach

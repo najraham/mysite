@@ -6,7 +6,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html">
-        <img src="{{asset('backend/img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
+        <img src="{{asset('frontend/img/logo.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -121,6 +121,11 @@
                 </ul>
             </div>
           </li>
+          {{-- <li class="nav-item">
+            <a href="{{route('show_dashboard_review_page')}}" class="nav-link @if($title == "Review") active @endif">
+                <i class="fas fa-star-half-alt text-info"></i> Review
+            </a>
+          </li> --}}
           <li class="nav-item">
             <a href="{{route('show_dashboard_blog_page')}}" class="nav-link @if($title == "Blogs") active @endif">
               <i class="ni ni-collection text-yellow"></i> Blogs

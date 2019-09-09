@@ -10,17 +10,50 @@ use App\Skill;
 use App\Blog;
 use App\Message;
 use App\Footer;
+use App\Review;
 
 class DashboardController extends Controller
 {
+    public function changeMessageStatus($id)
+    {
+        $message = Message::find($id);
+        $message->status = "read";
+        $message->save();
+
+        return redirect()->back();
+    }
+
     public function single_blog($id)
     {
         $blog = Blog::find($id);
         $title = "Single Blog";
+        $messages = Message::all()->where('status' , 'unread');
+
         return view('backend.pages.single_blog')->with([
             'title' => $title,
             'blog' => $blog,
+            'messages' => $messages,
             ]);
+    }
+
+    public function review()
+    {
+        $title = "Review";
+        $reviews = Review::all();
+        return view('backend.pages.reviews')->with([
+            'reviews' => $reviews,
+            'title' => $title,
+        ]);
+    }
+
+    public function addReview(Request $request)
+    {
+        $review = new Review();
+        $review->title = $request->input('title');
+        $review->description = $request->input('description');
+        $review->save();
+
+        return redirect()->back()->with('success' , 'Review added');
     }
 
     public function __construct() 
@@ -33,7 +66,7 @@ class DashboardController extends Controller
         $blogs = Blog::all();
         $projects = Project::all();
         $skills = Skill::all();
-        $messages = Message::all();
+        $messages = Message::all()->where('status' , 'unread');
         return view('backend.pages.dash')->with([
             'title' => $title,
             'blogs' => $blogs,
@@ -47,9 +80,11 @@ class DashboardController extends Controller
     {
         $title = "Index";
         $index = Index::first();
+        $messages = Message::all()->where('status' , 'unread');
         return view('backend.pages.index')->with([
             'title' => $title,
             'index' => $index,
+            'messages' => $messages,
             ]);
     }
 
@@ -57,9 +92,11 @@ class DashboardController extends Controller
     {
         $title = "About";
         $about = About::first();
+        $messages = Message::all()->where('status' , 'unread');
         return view('backend.pages.about')->with([
             'title' => $title,
             'about' => $about,
+            'messages' => $messages,
             ]);
     }
 
@@ -70,12 +107,14 @@ class DashboardController extends Controller
         $title1 = "Skills";
         $projects = Project::all();
         $skills = Skill::all();
+        $messages = Message::all()->where('status' , 'unread');
         return view('backend.pages.works')->with([
             'title' => $title,
             'title2' => $title2,
             'title1' => $title1,
             'projects' => $projects,
             'skills' => $skills,
+            'messages' => $messages,
             ]);
     }
 
@@ -83,9 +122,11 @@ class DashboardController extends Controller
     {
         $title = "Blogs";
         $blogs = Blog::all();
+        $messages = Message::all()->where('status' , 'unread');
         return view('backend.pages.blog')->with([
             'title' => $title,
             'blogs' => $blogs,
+            'messages' => $messages,
             ]);
     }
 
@@ -305,10 +346,12 @@ class DashboardController extends Controller
     {
         $title = "Contact";
         $contact = Footer::first();
+        $messages = Message::all()->where('status' , 'unread');
 
         return view('backend.pages.contact')->with([
             'title' => $title,
             'contact' => $contact,
+            'messages' => $messages,
         ]);
     }
 
@@ -328,10 +371,12 @@ class DashboardController extends Controller
     {
         $title = "Link";
         $link = Footer::first();
+        $messages = Message::all()->where('status' , 'unread');
 
         return view('backend.pages.link')->with([
             'title' => $title,
             'link' => $link,
+            'messages' => $messages,
         ]);
     }
 }
