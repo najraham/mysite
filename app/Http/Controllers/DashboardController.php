@@ -14,13 +14,23 @@ use App\Review;
 
 class DashboardController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth')->except(['changeMessageStatus' , 'editAbout' , 'editIndex' , 'editProject']);
+    }
+
     public function changeMessageStatus($id)
     {
+        // return 1;
         $message = Message::find($id);
         $message->status = "read";
         $message->save();
 
-        return redirect()->back();
+        $json_resp = [
+            'status' => 'SUCCCESS',
+        ];
+
+        return response()->json($json_resp);
     }
 
     public function single_blog($id)
@@ -56,10 +66,7 @@ class DashboardController extends Controller
         return redirect()->back()->with('success' , 'Review added');
     }
 
-    public function __construct() 
-    {
-        $this->middleware('auth');
-    }
+    
     public function dashboard()
     {
         $title = "Dashboard";
@@ -148,31 +155,26 @@ class DashboardController extends Controller
             $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
 
             $index->image = $fileNameToStore;
-        } 
-        else 
-        {
-            $index->image = $request->input('preimage');
         }
 
         $index->first_name = $request->input('first_name');
         $index->last_name = $request->input('last_name');
         $index->slogan = $request->input('slogan');
-        $index->intro = $request->input('introduction');
+        $index->intro = $request->input('intro');
         $index->description = $request->input('description');
-        
         $index->save();
 
-        return redirect()->back()->with('success' , 'Value(s) edited....');
+        return response()->json($index);
     }
 
     public function editAbout(Request $request)
-    {
+    { 
         $about = About::find($request->input('id'));
         $about->title = $request->input('title');
         $about->description = $request->input('description');
         $about->save();
 
-        return redirect()->back()->with('success' , 'Value(s) edited....');
+        return response()->json($about);
     }
 
     public function editProject(Request $request)
@@ -193,19 +195,13 @@ class DashboardController extends Controller
             $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
 
             $project->image = $fileNameToStore;
-        } 
-        else 
-        {
-            $project->image = $request->input('preimage');
         }
 
-        
-        
         $project->title = $request->input('title');
         $project->link = $request->input('link');
         $project->save();
 
-        return redirect()->back()->with('success' , 'Value(s) edited..');
+        return response()->json($project);
     }
 
     public function editSkill(Request $request)

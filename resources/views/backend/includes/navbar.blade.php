@@ -21,7 +21,7 @@
               <div class="media-body ml-2 d-none d-lg-block">
                     <i class="far fa-envelope"></i>
                     @if (count($messages)>0)
-                      <span class="badge badge-danger">{{count($messages)}}</span>                          
+                      <span id="count" class="badge badge-danger">{{count($messages)}}</span>                          
                     @endif
               </div>
             </div>
@@ -93,8 +93,21 @@
                     <button class="btn btn-primary my-4" onclick="exit_modal('{{$message->id}}')">OK</button>
                     <script>
                       function exit_modal(id) {
-                          $('#modal-form'+id).modal('hide');
-                          window.location.href="/messageStatus/id=" + id;
+                        $.ajax({
+                          type:'GET',
+                          url:'/api/messageStatus/' + id,
+                          success:function(data) {
+                              let count = $("#count").text();
+                              count = count - 1;
+                              $("#count").text(count)
+
+                              if (count == 0)
+                              {
+                                document.getElementById("count").style.display = "none";
+                              }
+                              $('#modal-form'+id).modal('hide');
+                          }
+                        });
                       }
                     </script>
                 </div>

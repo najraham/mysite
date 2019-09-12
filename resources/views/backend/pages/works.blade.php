@@ -28,13 +28,13 @@
                 @if (count($projects)>0)
                   @foreach ($projects as $project)
                     <tr>
-                      <th scope="row">
+                      <th id="project_id" scope="row">
                         {{$project->id}}
                         {{-- <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt=""> --}}
                       </th>
-                      <td class="multiline_td">{{$project->title}}</td>
+                      <td id="project_title" class="multiline_td">{{$project->title}}</td>
                       <td>
-                        <button class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#show_detail{{$project->id}}">
+                        <button onclick="editProject({{$project->id}})" class="btn btn-sm btn-icon btn-3 btn-warning" type="button" data-toggle="modal" data-target="#show_detail{{$project->id}}">
                           <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
                           <span class="btn-inner--text">Show Details</span>
                         </button>
@@ -98,42 +98,59 @@
                             <div class="modal-body p-0">
                               <div class="card bg-secondary shadow border-0">
                                 <div class="card-body px-lg-5 py-lg-5">
-                                  <form role="form" method="POST" action="{{route('edit_project')}}" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" value="{{$project->id}}" name="id">
-                                    <input type="hidden" value="{{$project->image}}" name="preimage">
-                                      <div class="form-group mb-3">
-                                        <label for="fname">Image</label>
-                                        <div class="input-group input-group-alternative">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                          </div>
-                                          <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt="">
-                                          <input class="form-control" type="file" name="image" id="fname">
-                                        </div>
+                                  <input type="hidden" value="{{$project->id}}" name="id">
+                                  <div class="form-group mb-3">
+                                    <label for="image">Image</label>
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                       </div>
-                                      <div class="form-group mb-3">
-                                        <label for="fname1">Title</label>
-                                        <div class="input-group input-group-alternative">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                          </div>
-                                          <input class="form-control" value="{{$project->title}}" placeholder="First Name" type="text" name="title" id="fname1">
-                                        </div>
+                                      <img src="{{asset('storage/images/'.$project->image)}}" style="width:60px" alt="">
+                                      <input class="form-control" type="file" name="image" id="image">
+                                    </div>
+                                  </div>
+                                  <div class="form-group mb-3">
+                                    <label for="title">Title</label>
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                       </div>
-                                      <div class="form-group">
-                                        <label for="desc">Link</label>
-                                        <div class="input-group input-group-alternative">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-diamond"></i></span>
-                                          </div>
-                                          <input class="form-control" value="{{$project->link}}" placeholder="First Name" type="text" name="link" id="desc"> 
-                                        </div>
+                                      <input class="form-control" value="{{$project->title}}" placeholder="First Name" type="text" name="title" id="title">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="link">Link</label>
+                                    <div class="input-group input-group-alternative">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="ni ni-diamond"></i></span>
                                       </div>
-                                      <div class="text-right">
-                                          <button type="submit" class="btn btn-primary my-4">Save</button>
-                                      </div>
-                                  </form>
+                                      <input class="form-control" value="{{$project->link}}" placeholder="First Name" type="text" name="link" id="link"> 
+                                    </div>
+                                  </div>
+                                  <div class="text-right">
+                                      <button onclick="editProject({{$project->id}})" type="submit" class="btn btn-primary my-4">Save</button>
+                                      <script>
+                                        function editProject(id)
+                                        {
+                                          $.ajax({
+                                            type:'POST',
+                                            url:'/api/editedProject/',
+                                            data: {
+                                              "_token": "{{ csrf_token() }}",
+                                              "id": id,
+                                              "image": $('#image').val(),
+                                              "title" : $('#title').val(),
+                                              "link" : $('#link').val(),
+                                            },
+                                            success:function(data) {
+                                                $('#modal-form' +id).modal('hide');
+                                                $('#project_title').text(data.title);
+                                                $('#project_id').text(data.id);
+                                            }
+                                          });
+                                        }
+                                      </script>
+                                  </div>
                                 </div>
                               </div>
                             </div>
